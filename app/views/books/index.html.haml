@@ -1,0 +1,22 @@
+%p#notice= notice
+.container-fluid
+  %h1 Hipster Books
+  %table.table-striped
+    %thead
+      %tr
+        %th Title
+        %th Content
+        %th{:colspan => "4"}
+    %tbody
+      - @books.shuffle.each do |book|
+        %tr
+          %td= book.title
+          %td= book.content
+          %td= link_to 'Show|', book
+          %td= link_to 'Edit|', edit_book_path(book)
+          %td= link_to 'Delete', book, method: :delete, data: { confirm: 'Are you sure?' }
+      %hr/
+      %button.btn= link_to 'Create Book', new_book_path
+  %hr/
+  .container.col-md-4.col-md-4-offset-3
+  = paginate @books, :theme => 'twitter-bootstrap-3'

@@ -1,0 +1,9 @@
+.container.col-md-4.col-md-4-offset-by-4
+  .card
+    .card-block
+    %h4.card-title
+    = @book.title
+    %p.card-text
+    = @book.content
+    %a.card-link= link_to 'Edit |', edit_book_path(@book)
+    %a.card-link= link_to 'Back', books_path
